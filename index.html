@@ -57,7 +57,7 @@
       margin-right: 40px;
       outline-style: none;
       border: 1px solid #ccc;
-      border-radius: 3px;
+      border-radius: 8px;
       padding: 6px;
       width: 50px;
       font-size: 14px;
@@ -140,6 +140,13 @@
     </footer>
   </div>
   <script>
+
+    const logInfo = (content) => {
+      console.log("%c---------------------------------------------------------", 'color:pink');
+      console.log(`%c------------------------%c${content}%c------------------------`, 'color:aqua', 'color:red', 'color:aqua');
+      console.log("%c---------------------------------------------------------", 'color:pink');
+    }
+    logInfo('二次元别进');
 
     // const pattern = "/[\u4e00-\u9fa5]+/gi"; // 匹配中文字符的正则表达式
     // let result =[...new Set(json.match(/[\u4e00-\u9fa5]+/gi))] // 使用 match 方法匹配中文字符
@@ -350,7 +357,7 @@
         alert("请输入一个正整数")
         document.getElementById("number").value = 1
         return
-      }else if (num > 20) {
+      } else if (num > 20) {
         alert("不能太贪心哦,请输入一个小于或等于20的正整数")
         document.getElementById("number").value = 1
         return
@@ -388,7 +395,7 @@
       // console.log('hello');
       const result = document.getElementById('result')
       const child = result.childNodes
-      for (let i = child.length-1; i >=0 ; i--) {
+      for (let i = child.length - 1; i >= 0; i--) {
         result.removeChild(child[i])
       }
     }
