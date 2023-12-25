@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大乱斗</title>
+  <!-- <link rel="icon" href="https://c-ssl.dtstatic.com/uploads/item/202003/27/20200327095530_nyikh.thumb.1000_0.jpg" sizes="16x16"> -->
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background-color: #ebeef1;
+    }
+
+    .content {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    header {
+      height: 8vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #fff;
+      background-color: #5383e8;
+    }
+
+    header h1 {
+      letter-spacing: 3px;
+      text-align: center;
+
+    }
+
+    .middle {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 4vh 20vw;
+      /* background-color: gray; */
+    }
+
+    #result {
+      margin-left: 20px;
+      width: 150px;
+    }
+
+    input {
+      margin-right: 40px;
+      outline-style: none;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 6px;
+      width: 50px;
+      font-size: 14px;
+      font-family: "Microsoft soft";
+    }
+
+    input:focus {
+      border-color: #66afe9;
+      outline: 0;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+    }
+
+    .niceButton {
+      position: relative;
+      background-color: #5383e8;
+      border: none;
+      border-radius: 22px;
+      font-size: 18px;
+      color: #ffffff;
+      padding: 10px;
+      width: 100px;
+      text-align: center;
+      transition-duration: 0.6s;
+      text-decoration: none;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .niceButton::after {
+      content: '';
+      background: #53a4f0;
+      display: block;
+      position: absolute;
+      padding-top: 300%;
+      padding-left: 350%;
+      margin-left: -20px !important;
+      margin-top: -120%;
+      opacity: 0;
+      transition: all 0.8s;
+    }
+
+    .niceButton:active::after {
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      transition: 0s;
+    }
+
+    footer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4vh 20vw;
+      color: white;
+      background-color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <header>
+      <h1 class="title">这是一个随机英雄的小程序</h1>
+    </header>
+    <div class="middle">
+      <div class="mul">
+        抽取次数：<input id="number" type="number" value="1">
+        <button class="niceButton" onclick="submit()">确认</button>
+        <button class="niceButton" onclick="clearResult()">清除</button>
+
+      </div>
+      <div id="result"></div>
+    </div>
+    <footer>
+      <h4>英雄Rank数据根据OP.GG极地大乱斗强度排行得出</h4>
+      <a href="https://www.op.gg/modes/aram"><img
+          src="https://s-lol-web.op.gg/images/icon/icon-opgglogo-gray.svg?v=1702977255104"></a>
+    </footer>
+  </div>
+  <script>
+
+    // const pattern = "/[\u4e00-\u9fa5]+/gi"; // 匹配中文字符的正则表达式
+    // let result =[...new Set(json.match(/[\u4e00-\u9fa5]+/gi))] // 使用 match 方法匹配中文字符
+
+    let championArr = [
+      "暴走萝莉",
+      "探险家",
+      "戏命师",
+      "战争女神",
+      "涤魂圣枪",
+      "法外狂徒",
+      "逆羽",
+      "暗夜猎手",
+      "正义天使",
+      "机械先驱",
+      "暗裔剑魔",
+      "风暴之怒",
+      "复仇焰魂",
+      "魂锁典狱长",
+      "皮城女警",
+      "堕落天使",
+      "猩红收割者",
+      "光辉女郎",
+      "放逐之刃",
+      "深渊巨口",
+      "卡牌大师",
+      "邪恶小法师",
+      "圣枪游侠",
+      "残月之肃",
+      "发条魔灵",
+      "荣耀行刑官",
+      "沙漠玫瑰",
+      "酒桶",
+      "万花通灵",
+      "潮汐海灵",
+      "符文法师",
+      "九尾妖狐",
+      "虚空先知",
+      "皎月女神",
+      "刀锋舞者",
+      "惩戒之箭",
+      "黑暗之女",
+      "诺克萨斯统领",
+      "灵罗娃娃",
+      "天启者",
+      "爆破鬼才",
+      "祖安花火",
+      "荒漠屠夫",
+      "炼金男爵",
+      "岩雀",
+      "铁铠冥魂",
+      "武器大师",
+      "深海泰坦",
+      "愁云使者",
+      "青钢影",
+      "虚空之眼",
+      "扭曲树精",
+      "海洋之灾",
+      "亡灵战神",
+      "明烛",
+      "无双剑姬",
+      "正义巨像",
+      "不屈之枪",
+      "不羁之悦",
+      "时间刺客",
+      "远古巫灵",
+      "海兽祭司",
+      "未来守护者",
+      "狂暴之心",
+      "解脱者",
+      "含羞蓓蕾",
+      "远古恐惧",
+      "翠神",
+      "河流之王",
+      "曙光女神",
+      "圣锤之毅",
+      "星籁歌姬",
+      "破败之王",
+      "琴瑟仙女",
+      "幻翎",
+      "无极剑圣",
+      "瘟疫之源",
+      "唤潮鲛姬",
+      "冰霜女巫",
+      "暮光之眼",
+      "疾风剑豪",
+      "巨魔之王",
+      "沙漠皇帝",
+      "山隐之焰",
+      "弗雷尔卓德之心",
+      "荆棘之兴",
+      "德玛西亚之力",
+      "麦林炮手",
+      "狂战士",
+      "诺克萨斯之手",
+      "沙漠死神",
+      "暗黑元首",
+      "炼金术士",
+      "纳祖芒荣耀",
+      "虚空恐惧",
+      "生化魔人",
+      "复仇之矛",
+      "蜘蛛女皇",
+      "迷失之牙",
+      "狂野女猎手",
+      "众星之子",
+      "兽灵行者",
+      "暮光星灵",
+      "蛮族之王",
+      "齐天大圣",
+      "披甲龙龟",
+      "牛头酋长",
+      "德邦总管",
+      "仙灵女巫",
+      "虚空行者",
+      "狂厄蔷薇",
+      "龙血武姬",
+      "瓦洛兰之盾",
+      "熔岩巨兽",
+      "魔蛇之拥",
+      "镕铁少女",
+      "魔法猫咪",
+      "永猎双子",
+      "殇之木乃伊",
+      "水晶先锋",
+      "腕豪",
+      "迅捷斥候",
+      "虚空遁地兽",
+      "北地之怒",
+      "无畏战车",
+      "百裂冥犬",
+      "牧魂人",
+      "祖安狂人",
+      "祖安怒兽",
+      "暴怒骑士",
+      "死亡颂唱者",
+      "蒸汽机器人",
+      "永恒梦魇",
+      "冰晶凤凰",
+      "英勇投弹手",
+      "不灭狂雷",
+      "机械公敌",
+      "大发明家",
+      "影哨",
+      "德玛西亚之翼",
+      "战争之影",
+      "虚空女皇",
+      "赏金猎人",
+      "痛苦之拥",
+      "刀锋之影",
+      "傲之追猎者",
+      "影流之镰",
+      "皮城执法官",
+      "恶魔小丑",
+      "封魔剑魂",
+      "虚空掠夺者",
+      "虚空之女",
+      "德玛西亚皇子",
+      "雪原双子",
+      "时光守护者",
+      "盲僧",
+      "铸星龙王",
+      "星界游神",
+      "血港鬼影",
+      "元素女皇",
+      "不祥之刃",
+      "影流之主",
+      "寒冰射手",
+      "离群之刺",
+      "诡术妖姬",
+      "异画师"
+    ]
+
+    //生成从minNum到maxNum的随机数
+    function randomNum(minNum, maxNum) {
+      switch (arguments.length) {
+        case 1:
+          return parseInt(Math.random() * minNum + 1, 10);
+          break;
+        case 2:
+          return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+          break;
+        default:
+          return 0;
+          break;
+      }
+    }
+
+    const randomChanpion = (num) => {
+      console.log("当前roll次数设定为:" + num);
+      const randomArr = []
+      for (let i = 0; i < num; i++) {
+        const index = randomNum(1, 166)
+        randomArr.push({
+          rank: index,
+          name: championArr[index - 1]
+        })
+      }
+      randomArr.sort((a, b) => a.rank - b.rank)
+      randomArr.forEach(item => { console.log(item); })
+    }
+    const randomChanpionAddHtml = (num) => {
+      // console.log("当前roll次数设定为:"+num);
+      if (num <= 0) {
+        alert("请输入一个正整数")
+        document.getElementById("number").value = 1
+        return
+      }
+      if (num > 20) {
+        alert("不能太贪心哦")
+        document.getElementById("number").value = 1
+        return
+      }
+      const randomArr = []
+      for (let i = 0; i < num; i++) {
+        const index = randomNum(1, 166)
+        randomArr.push({
+          rank: index,
+          name: championArr[index - 1]
+        })
+      }
+      randomArr.sort((a, b) => a.rank - b.rank)
+      randomArr.forEach(item => {
+        const a = document.createElement("h5");
+        //设置a的关键属性
+        a.innerHTML = item.rank + " " + item.name;
+        document.getElementById('result').appendChild(a)
+      })
+    }
+    function submit() {
+      randomChanpionAddHtml(document.getElementById("number").value)
+      // randomChanpion(document.getElementById("number").value)
+    }
+
+    function clearResult() {
+      // console.log('hello');
+      const result = document.getElementById('result')
+      const child = result.childNodes
+      for (let i = child.length-1; i >=0 ; i--) {
+        result.removeChild(child[i])
+      }
+    }
+  </script>
+</body>
+
+</html>
