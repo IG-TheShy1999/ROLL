@@ -38,9 +38,8 @@ header h1 {
   /* background-color: gray; */
 }
 
-#result {
-  margin-left: 20px;
-  width: 150px;
+.middle .mul {
+  min-width: 400px;
 }
 
 input {
@@ -96,6 +95,74 @@ input:focus {
   opacity: 1;
   transition: 0s;
 }
+
+#result {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #fff;
+  margin-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  min-width: 320px;
+  border-radius: 5px;
+}
+
+#result table{
+  width: 300px;
+  border-spacing: 0;
+  font-size: 14px;
+}
+
+#result img{
+  width: 32px;
+  height: 32px;
+}
+
+#result thead th{
+  background-color: #f7f7f9;
+}
+
+#result tbody tr{
+  height: 35px;
+  background-color: #fff;
+}
+
+#result tbody tr:hover{
+  background-color: #f7f7f9;
+}
+
+#result tbody tr td{
+  text-align: center;
+  vertical-align: middle;
+}
+#result tbody tr td a{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+#result tbody tr td a:active{
+  color: black;
+}
+#result tbody tr td a:visited{
+  color: #000;
+}
+.champion{
+  /* width:120px; */
+}
+.champion img{
+  border-radius: 5px;
+  margin:0 10px;
+}
+.tier{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+}
+
 
 footer {
   display: flex;

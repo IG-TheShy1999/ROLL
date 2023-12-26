@@ -55,16 +55,27 @@ const randomChanpionAddHtml = (num) => {
     }
     indexArr.push(index)
     randomArr.push({
+      key:championArr[index - 1].key,
       rank: index,
-      name: championArr[index - 1].name
+      championImg:championArr[index - 1].image_url,
+      name: championArr[index - 1].name,
+      tier:championArr[index - 1].average_stats.tier,
+      winRate:championArr[index - 1].average_stats.win_rate,
     })
   }
   randomArr.sort((a, b) => a.rank - b.rank)
   randomArr.forEach(item => {
-    const a = document.createElement("h5");
+    const tr = document.createElement("tr");
     //设置a的关键属性
-    a.innerHTML = item.rank + " " + item.name;
-    document.getElementById('result').appendChild(a)
+    tr.innerHTML = 
+    `
+      <td class="rank">${item.rank}</td>
+      <td class="champion"><a href="https://www.op.gg/modes/aram/${item.key}/build?region=global" target="_blank"><img src="${item.championImg}">${item.name}</a></td>
+      <td class="tier"><img src="https://s-lol-web.op.gg/images/icon/icon-tier-${item.tier}.svg"></td>
+      <td class="rate">${item.winRate}</td>
+    `
+    ;
+    document.getElementById('tbody').appendChild(tr)
   })
 }
 
@@ -77,7 +88,7 @@ const submit = () => {
 // Button清除
 const clearResult = () => {
   // console.log('hello');
-  const result = document.getElementById('result')
+  const result = document.getElementById('tbody')
   const child = result.childNodes
   for (let i = child.length - 1; i >= 0; i--) {
     result.removeChild(child[i])
