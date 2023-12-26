@@ -1,4 +1,4 @@
-const championArr = [
+const aramChampionArr = [
   {
     "id": 222,
     "is_rotation": false,

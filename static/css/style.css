@@ -38,6 +38,34 @@ header h1 {
   /* background-color: gray; */
 }
 
+.middle .mode{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.middle .mode .modeButton{
+  position: relative;
+  background-color: #fff;
+  border: none;
+  border-radius: 22px;
+  font-size: 18px;
+  color: #000;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+  transition-duration: 0.6s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.middle .mode :nth-child(1){
+  margin-bottom: 20px;
+}
+
+
+
 .middle .mul {
   min-width: 400px;
 }

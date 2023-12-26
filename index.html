@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>大乱斗</title>
   <link rel="icon" href="./static/img/Tomori.png" sizes="16x9">
-  <script src='static/js/tierListData.js'></script>
-  <script src="static/js/main.js"></script>
+  <script src='static/js/aramTierListData.js'></script>
+  <script src='static/js/arenaTierListData.js'></script>
   <link rel="stylesheet" href="static/css/style.css">
 </head>
 
@@ -17,6 +17,10 @@
       <h1 class="title">这是一个随机英雄的小程序</h1>
     </header>
     <div class="middle">
+      <div class="mode">
+        <button class="modeButton">大乱斗</button>
+        <button class="modeButton">斗魂</button>
+      </div>
       <div class="mul">
         抽取次数：<input id="number" type="number" value="1">
         <button class="niceButton" onclick="submit()">确认</button>
@@ -45,5 +49,6 @@
     </footer>
   </div>
 </body>
+<script src="static/js/main.js"></script>
 
 </html>
