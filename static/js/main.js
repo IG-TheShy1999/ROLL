@@ -60,7 +60,7 @@ const randomChanpionAddHtml = (num) => {
       championImg:championArr[index - 1].image_url,
       name: championArr[index - 1].name,
       tier:championArr[index - 1].average_stats.tier,
-      winRate:championArr[index - 1].average_stats.win_rate,
+      winRate:Number(championArr[index - 1].average_stats.win_rate*100).toFixed(2)+'%',
     })
   }
   randomArr.sort((a, b) => a.rank - b.rank)
@@ -72,7 +72,7 @@ const randomChanpionAddHtml = (num) => {
       <td class="rank">${item.rank}</td>
       <td class="champion"><a href="https://www.op.gg/modes/aram/${item.key}/build?region=global" target="_blank"><img src="${item.championImg}">${item.name}</a></td>
       <td class="tier"><img src="https://s-lol-web.op.gg/images/icon/icon-tier-${item.tier}.svg"></td>
-      <td class="rate">${item.winRate}</td>
+      <td class="rate">${(item.winRate)}</td>
     `
     ;
     document.getElementById('tbody').appendChild(tr)
