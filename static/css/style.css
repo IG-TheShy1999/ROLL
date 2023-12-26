@@ -108,59 +108,72 @@ input:focus {
   border-radius: 5px;
 }
 
-#result table{
+#result table {
   width: 300px;
   border-spacing: 0;
   font-size: 14px;
 }
 
-#result img{
+#result img {
   width: 32px;
   height: 32px;
 }
 
-#result thead th{
+#result thead th {
+  user-select: none;
   background-color: #f7f7f9;
 }
 
-#result tbody tr{
+#result tbody tr {
   height: 35px;
   background-color: #fff;
 }
 
-#result tbody tr:hover{
+#result tbody tr:hover {
   background-color: #f7f7f9;
 }
 
-#result tbody tr td{
+#result tbody tr td {
   text-align: center;
   vertical-align: middle;
 }
-#result tbody tr td a{
+
+#result tbody tr td a {
   display: flex;
   flex-direction: row;
   align-items: center;
   text-decoration: none;
   color: black;
 }
-#result tbody tr td a:active{
+
+#result tbody tr td a:active {
   color: black;
 }
-#result tbody tr td a:visited{
+
+#result tbody tr td a:visited {
   color: #000;
 }
-.champion{
+
+.champion {
   /* width:120px; */
 }
-.champion img{
+
+.champion img {
   border-radius: 5px;
-  margin:0 10px;
+  margin: 0 10px;
+  user-select: none;
 }
-.tier{
+
+.tier {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 45px;
+  user-select: none;
+}
+
+.rate {
+  user-select: none;
 }
 
 

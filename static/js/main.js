@@ -49,9 +49,9 @@ const randomChanpionAddHtml = (num) => {
   const indexArr = []
   const randomArr = []
   for (let i = 0; i < num; i++) {
-    let index = randomNum(1, 166)
+    let index = randomNum(1, championArr.length)
     while (indexArr.includes(index)) {
-      index = randomNum(1, 166)
+      index = randomNum(1, championArr.length)
     }
     indexArr.push(index)
     randomArr.push({
