@@ -1,0 +1,220 @@
+@media (min-width: 480px) and (max-width: 960px){
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    background-color: #ebeef1;
+  }
+  
+  .content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  header {
+    min-height: 8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    background-color: #5383e8;
+  }
+  
+  header h1 {
+    letter-spacing: 3px;
+    text-align: center;
+  
+  }
+  
+  .middle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 4vh 20vw;
+    /* background-color: gray; */
+  }
+  
+  .middle .mode{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .middle .mode .modeButton{
+    position: relative;
+    background-color: #fff;
+    border: none;
+    border-radius: 22px;
+    font-size: 18px;
+    color: #000;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+    transition-duration: 0.6s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .middle .mode :nth-child(1){
+    margin-bottom: 20px;
+  }
+  
+  
+  
+  .middle .mul {
+    min-width: 400px;
+  }
+  
+  input {
+    margin-right: 40px;
+    outline-style: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px;
+    width: 50px;
+    font-size: 14px;
+    font-family: "Microsoft soft";
+  }
+  
+  input:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+  }
+  
+  .niceButton {
+    position: relative;
+    background-color: #5383e8;
+    border: none;
+    border-radius: 22px;
+    font-size: 18px;
+    color: #ffffff;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+    transition-duration: 0.6s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .niceButton::after {
+    content: '';
+    background: #53a4f0;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s;
+  }
+  
+  .niceButton:active::after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s;
+  }
+  
+  #result {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #fff;
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-width: 320px;
+    border-radius: 5px;
+    max-height: 600px;
+    overflow: auto;
+  }
+  
+  #result table {
+    width: 300px;
+    border-spacing: 0;
+    font-size: 14px;
+  }
+  
+  #result img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  #result thead th {
+    user-select: none;
+    background-color: #f7f7f9;
+  }
+  
+  #result tbody tr {
+    height: 35px;
+    background-color: #fff;
+  }
+  
+  #result tbody tr:hover {
+    background-color: #f7f7f9;
+  }
+  
+  #result tbody tr td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  #result tbody tr td a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+  }
+  
+  #result tbody tr td a:active {
+    color: black;
+  }
+  
+  #result tbody tr td a:visited {
+    color: #000;
+  }
+  
+  .champion {
+    /* width:120px; */
+  }
+  
+  .champion img {
+    border-radius: 5px;
+    margin: 0 10px;
+    user-select: none;
+  }
+  
+  .tier {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    user-select: none;
+  }
+  
+  .rate {
+    user-select: none;
+  }
+  
+  
+  footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4vh 20vw;
+    color: white;
+    background-color: #555;
+  }
+  }
