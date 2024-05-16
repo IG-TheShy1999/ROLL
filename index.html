@@ -22,11 +22,14 @@
       <div class="mode">
         <button class="modeButton">大乱斗</button>
         <button class="modeButton">斗魂</button>
+
       </div>
       <div class="mul">
         抽取次数：<input id="number" type="number" value="1">
         <button class="niceButton" onclick="submit()">确认</button>
         <button class="niceButton" onclick="clearResult()">清除</button>
+      <div class="copyButton niceButton" onclick="copy()">一键复制</div>
+
       </div>
       <div id="result">
         <table border="0">
@@ -42,6 +45,7 @@
 
           </tbody>
         </table>
+        
       </div>
     </div>
     <footer>

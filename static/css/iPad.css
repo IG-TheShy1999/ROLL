@@ -1,4 +1,4 @@
-@media (min-width: 480px) and (max-width: 960px){
+@media (min-width: 800px) and (max-width: 960px){
   * {
     padding: 0;
     margin: 0;
@@ -68,6 +68,7 @@
   
   
   .middle .mul {
+    position: relative;
     min-width: 400px;
   }
   
@@ -123,6 +124,11 @@
     margin: 0;
     opacity: 1;
     transition: 0s;
+  }
+  .copyButton{
+    position: absolute;
+    top: 60px;
+    right: 0;
   }
   
   #result {

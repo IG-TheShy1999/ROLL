@@ -1,4 +1,4 @@
-@media (max-width: 480px) {
+@media (max-width: 799px) {
   /* 在这里编写针对小屏幕的样式 */
   * {
     padding: 0;
@@ -70,6 +70,7 @@
   
   
   .middle .mul {
+    position: relative;
     min-width: 400px;
   }
   
@@ -127,6 +128,13 @@
     transition: 0s;
   }
   
+  .copyButton{
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    translate: -50%;
+  }
+
   #result {
     display: flex;
     flex-direction: row;
@@ -139,6 +147,7 @@
     border-radius: 5px;
     max-height: 50vh;
     margin: 20px 0px;
+    margin-top: 80px;
     overflow: auto;
   }
   

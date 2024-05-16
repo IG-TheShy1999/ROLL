@@ -1,16 +1,6 @@
 // import{championArr} from "./tierListData"
 
-// import './tierListData.js'
-// document.write("<script src='static/js/tierListData.js'></script>");
-// http请求
-// const Http = new XMLHttpRequest();
-// const url='https://www.op.gg/_next/data/e-5T64yN45gAGOjTxNgTp/en_US/modes/aram.json';
-// Http.open("GET", url);
-// Http.send();
 
-// Http.onreadystatechange = (e) => {
-//   console.log(Http.responseText)
-// }
 let mode = 'aram'
 
 const logInfo = (content) => {
@@ -116,7 +106,7 @@ for (let i = 0; i < btns.length; i++) {
 // Button确认
 const submit = () => {
   let num = document.getElementById("number").value
-  console.log(mode);
+  // console.log(mode);
   switch (mode) {
     case 'aram':
       randomChampionAddHtml(num, mode, aramChampionArr)
@@ -139,4 +129,39 @@ const clearResult = () => {
     result.removeChild(child[i])
   }
 }
+// Button copy
+const copy = async() => {
+  champion = document.getElementsByClassName('champion')
+  rank = document.getElementsByClassName('rank')
+
+  let copyText = ''
+  for (let i = 0; i < champion.length; i++) {
+    if (i !== champion.length - 1) {
+      copyText += rank[i].innerText + ' '+ champion[i].innerText + '\n';
+    } else {
+      // 最后一个元素，不添加换行符
+      copyText += rank[i].innerText + ' '+ champion[i].innerText;
+    }
+  }
+  try {
+    await navigator.clipboard.writeText(copyText);
+  } catch (err) {
+    console.error('Failed to copy text: ', err);
+  }
+  // champion.forEach(item => {
+  //     let copyText = item.innerText
+  //     // console.log(copyText);
+  //     navigator.clipboard.writeText(copyText)
+  //       .then(() => {
+  //         alert("复制成功")
+  //       })
+  //       .catch(err => {
+  //         alert('复制失败')
+  //       })
+
+  // })
+}
+
+
+
 

@@ -69,6 +69,7 @@ header h1 {
 
 .middle .mul {
   min-width: 400px;
+  position: relative;
 }
 
 input {
@@ -125,8 +126,15 @@ input:focus {
   transition: 0s;
 }
 
+.copyButton{
+  position: absolute;
+  top: 60px;
+  right: 0;
+}
+
 #result {
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: center;
   background-color: #fff;
@@ -184,6 +192,8 @@ input:focus {
 #result tbody tr td a:visited {
   color: #000;
 }
+
+
 
 .champion {
   /* width:120px; */
